@@ -10,7 +10,7 @@ public class AsyncTaskTest extends ActivityTestCase {
 
     private String mResult = null;
 
-    public void testAlbumGetTask() throws Throwable {
+    public void testJokeGetTask() throws Throwable {
 
         final CountDownLatch signal = new CountDownLatch(1);
 
