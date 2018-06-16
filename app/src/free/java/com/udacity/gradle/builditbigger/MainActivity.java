@@ -1,21 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.emadabel.jokedisplay.JokeActivity;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.udacity.gradle.builditbigger.backend.jokesApi.JokesApi;
-
-import java.io.IOException;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,15 +40,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        EndpointsAsyncTask myTask = new EndpointsAsyncTask();
-        myTask.setListener(new EndpointsAsyncTask.EndpointsTaskListener() {
-            @Override
-            public void onComplete(String result) {
-                Intent intent = new Intent(MainActivity.this, JokeActivity.class);
-                intent.putExtra(JokeActivity.JOKE_KEY, result);
-                startActivity(intent);
-            }
-        });
-        myTask.execute();
+        Context context = this;
+        CharSequence text = this.getString(R.string.toast_text);
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
